@@ -11,7 +11,14 @@ const defaultLang = 'en';
 // const LANGUAGES = ['ar']
 
 const getText = async (locale = defaultLang) => {
-  return await fetch(`https://crowdin.com/${distro}/${locale}.json`)
+  return await fetch(`https://distributions.crowdin.net/${distro}/content/${defaultLang}.json`, {
+    // method: 'GET',
+    headers: {
+      'Content-type' : 'application/json',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods':'GET,POST,PATCH,OPTIONS'
+    }
+  })
     .then(res => console.log(res))
     .catch(error => console.error(error));
 
