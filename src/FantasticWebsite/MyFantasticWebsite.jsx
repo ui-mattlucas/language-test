@@ -1,19 +1,38 @@
 import React, { useState } from 'react';
 import { IntlProvider, FormattedMessage } from 'react-intl';
+
+// import { i18n } from "@lingui/core"
+
+// import otaClient from "@crowdin/ota-client"
+
 import en from '../languages/en.json';
 import fr from '../languages/fr.json';
 import ja from '../languages/ja.json';
 import ru from '../languages/ru.json';
 import './MyFantasticWebsite.css';
 
+// export const locales = {
+//     en: "English",
+//     cs: "Česky",
+//     ar: 'Arabic',
+//     'zh-CN': 'Chinese',
+//     fr: 'French',
+//     de: 'German',
+//     el: 'Duderino',
+//     it: 'Italian',
+//     pt: 'Puertoguese',
+//     ru: 'Russian',
+//     es: 'Spanish'
+// }
+
 function MyFantasticWebsite() {
   const [locale, setLocale] = useState('en'); 
 
   const messages = {
-    en: en,
-    fr: fr,
-    ja: ja,
-    ru: ru
+    en,
+    fr,
+    ja,
+    ru
   };
 
   return (
