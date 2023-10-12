@@ -1,10 +1,15 @@
 import React from 'react';
-import MyFantasticWebsite from './FantasticWebsite/MyFantasticWebsite';
+import { useIntl } from 'react-intl';
 
-function App() {
+const App = () => {
+  const intl = useIntl();
+
   return (
-    <MyFantasticWebsite />
+    <div>
+      <h1>{intl.formatMessage({ id: 'BTBGtX' })}</h1>
+      <p>{intl.formatMessage({ id: 'EshJXE' })}</p>
+    </div>
   );
-}
+};
 
 export default App;
