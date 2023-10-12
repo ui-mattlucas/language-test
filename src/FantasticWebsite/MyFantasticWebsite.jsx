@@ -1,54 +1,43 @@
-import React, { useState } from 'react';
-import { IntlProvider, FormattedMessage } from 'react-intl';
+import React from 'react';
+import { useTranslation } from 'react-i18next';
 
-// import { i18n } from "@lingui/core"
-
-// import otaClient from "@crowdin/ota-client"
-
-import en from '../languages/en.json';
-import fr from '../languages/fr.json';
-import ja from '../languages/ja.json';
-import ru from '../languages/ru.json';
 import './MyFantasticWebsite.css';
 
-// export const locales = {
-//     en: "English",
-//     cs: "Česky",
-//     ar: 'Arabic',
-//     'zh-CN': 'Chinese',
-//     fr: 'French',
-//     de: 'German',
-//     el: 'Duderino',
-//     it: 'Italian',
-//     pt: 'Puertoguese',
-//     ru: 'Russian',
-//     es: 'Spanish'
-// }
+const locales = {
+  en: "English",
+  ar: 'Arabic',
+  zh: 'Chinese',
+  fr: 'French',
+  de: 'German',
+  el: 'Duderino',
+  it: 'Italian',
+  pt: 'Puertoguese',
+  ru: 'Russian',
+  es: 'Spanish'
+};
+
+const getLanguageLinks = () => {
+  return Object.entries(locales).map(([key, val]) => {
+    return <a href={key}>{val}</a>;
+  })
+}
 
 function MyFantasticWebsite() {
-  const [locale, setLocale] = useState('en'); 
+  const { t, ready } = useTranslation();
 
-  const messages = {
-    en,
-    fr,
-    ja,
-    ru
-  };
+  if (!ready) return <>"spinner"</>;
 
   return (
-    <IntlProvider locale={locale} messages={messages[locale]}>
+    <>
       <div className='centeredDiv'>
         <div className='buttonRow'>
-        <button onClick={() => setLocale('en')}>English</button>
-        <button onClick={() => setLocale('fr')}>French</button>
-        <button onClick={() => setLocale('ja')}>Japanese</button>
-        <button onClick={() => setLocale('ru')}>Russian</button>
+          {getLanguageLinks()}
         </div>
-      <h1 className='header'><FormattedMessage id="heading" /></h1>
-      <p className='body'><FormattedMessage id="caption" /></p>
-      <p className='body'><FormattedMessage id="subheading" /></p>
+        <h1 className='header'>{t('BTBGtX')}</h1>
+        <p className='body'>{t('EshJXE')}</p>
+        <p className='body'>{t('h/LH2J')}</p>
       </div>
-    </IntlProvider>
+    </>
   );
 }
 
